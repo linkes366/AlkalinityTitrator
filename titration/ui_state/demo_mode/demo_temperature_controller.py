@@ -27,6 +27,7 @@ class DemoTemperatureControl(UIState):
         """
         if self.substate == 1:
             if key == Keypad.KEY_1:
+                self.titrator.stir_controller.set_fast()
                 self.titrator.heater.on()
                 self.substate = 2
             if key == Keypad.KEY_2:
@@ -37,9 +38,11 @@ class DemoTemperatureControl(UIState):
         else:
             self.titrator.temp_controller.deactivate()
             self.titrator.heater.off()
+            self.titrator.stir_controller.set_stop()
             self.substate = 1
 
         if key == Keypad.KEY_D:
+            self.titrator.stir_controller.set_stop()
             self._set_next_state(self.previous_state, True)
 
     def loop(self):

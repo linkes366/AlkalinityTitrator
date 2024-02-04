@@ -77,7 +77,7 @@ class TemperatureControl:
         time_now = time.time()
 
         if time_now >= self.time_next:
-            if self.heater.value == 1:
+            if self.heater.value:
                 self.heater.off()
                 self.step_count += 1
                 self.__update_priors()
