@@ -20,11 +20,11 @@ def wait_delta(x):
         return
 
 
-def file_output(test_name, data, *args): #pass a tuple for each arg= name and val, data = time and datapoint
+def file_output(test_name, data, *args):  # pass a tuple for each arg= name and val, data = time and datapoint
     location = file_location
     location += test_name
     location += '.txt'
-    file = io.open(location, 'a', encoding="locale")
+    file = io.open(location, 'a')  # maybe it'll assume encoding'
 
     write_string = f'\n{test_name}'
     write_string += '\t'
@@ -37,10 +37,12 @@ def file_output(test_name, data, *args): #pass a tuple for each arg= name and va
         write_string += '\n'
     write_string += 'Time \t DataPoint \n'
     for point in data:
-        write_string += f'{point[0]} \t {point[1]} \n'
+        write_string += f'{point[0]}|{point[1]} \n'
+    write_string += '\n'
     file.write(write_string)
     file.close()
 
+#  testing delete later
 print('running')
 data = [(1, 0), (2, 4), (3, 8.8)]
 name = 'Testing'
