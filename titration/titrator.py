@@ -28,7 +28,7 @@ class Titrator:
         keypad (Keypad object): is used to identify what keypad value was entered
     """
 
-    def __init__(self):
+    def __init__(self, gain):
         """
         The constructor for the Titrator class
         """
@@ -39,7 +39,7 @@ class Titrator:
         self.keypad = Keypad()
 
         # Initialize pH Probe
-        self.ph_probe = PHProbe()
+        self.ph_probe = PHProbe(gain)
 
         # Initialize Syringe Pump
         self.pump = SyringePump()
